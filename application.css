@@ -1,0 +1,16 @@
+.lilypads{
+width: 130px;
+position: relative;
+height: auto;
+overflow: hidden;
+float: left;
+}
+
+.lilypads img {
+display: inline;
+max-height: 150px;
+max-width: 150px;
+width: 120px;
+height: 120px;
+margin: 0 10px;
+}
