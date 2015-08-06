@@ -51,9 +51,9 @@ body {
 }
 
 .x2 {
-	-webkit-animation: backgroundScroll 25s linear infinite;
-	-moz-animation: backgroundScroll 25s linear infinite;
-	-o-animation: backgroundScroll 25s linear infinite;
+	-webkit-animation: waterScroll 25s linear infinite;
+	-moz-animation: waterScroll 25s linear infinite;
+	-o-animation: waterScroll 25s linear infinite;
 }
 
  
@@ -65,4 +65,16 @@ to {background-position: -1024px 0;}
 @keyframes backgroundScroll {
 from {background-position: 0 0;}
 to {background-position: -1024px 0;}
+}
+
+
+ 
+@-webkit-keyframes waterScroll {
+from {background-position: 0 0;}
+to {background-position: -971px 0;}
+}
+ 
+@keyframes waterScroll {
+from {background-position: 0 0;}
+to {background-position: -971px 0;}
 }
