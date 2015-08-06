@@ -1,47 +1,25 @@
-.lilypads{
-width: 130px;
-position: relative;
-height: auto;
-overflow: hidden;
-float: left;
-}
-
-.lilypads img {
-display: inline;
-max-height: 150px;
-max-width: 150px;
-width: 120px;
-height: 120px;
-margin: 0 10px;
-}
-
-td{position:relative; z-index:1}
-#bottomimg{position:absolute; top:100; left:0; z-index:1}
-#topimg{position:absolute; top:100; left:0; z-index:2}
-
-/* frog now sitting directly on top of lilypad image*/
-
-
-/*Lets start with the cloud formation rather*/
-
-/*The container will also serve as the SKY*/
-
 *{ margin: 0; padding: 0;}
 
 body {
 	overflow: hidden;
 }
 
+#background {
+    position: relative;
+}
+
 /*Time to finalise the cloud shape*/
 .bg_landscape {
 	width: 100%; height:380px;
-	background: url(farBG1.png);
-	position: relative; 
+	background-image: url(farBG1.png);
+/*    z-index: -1;*/
+/*    position: absolute;*/
 }
 .bg_water {
 	width: 100%; height:500px;
-	background: url(water2.png);
-	position: relative; 
+	background-image: url(water2.png);
+/*    z-index: -1;*/
+    position: absolute;
 }
 
 .x1 {
@@ -66,8 +44,6 @@ to {background-position: -1024px 0;}
 from {background-position: 0 0;}
 to {background-position: -1024px 0;}
 }
-
-
  
 @-webkit-keyframes waterScroll {
 from {background-position: 0 0;}
@@ -78,3 +54,40 @@ to {background-position: -971px 0;}
 from {background-position: 0 0;}
 to {background-position: -971px 0;}
 }
+
+
+
+.lilypads{
+    width: 100%;
+    height: 200px;
+    position: relative;
+/*    height: auto;*/
+/*    overflow: hidden;*/
+}
+
+.lilypad {
+    max-width: 150px;
+    float: left;
+}
+
+.lilypad img{
+/*position: absolute;*/
+
+max-height: 150px;
+max-width: 150px;
+width: 120px;
+height: 120px;
+margin: 100px 10px;
+z-index: 2;    
+}
+
+/*td{position:relative; z-index:1}*/
+#bottomimg{position:absolute; top:100; left:0; z-index:1}
+#topimg{position:absolute; top:100; left:0; z-index:2}
+
+/* frog now sitting directly on top of lilypad image*/
+
+
+/*Lets start with the cloud formation rather*/
+
+/*The container will also serve as the SKY*/

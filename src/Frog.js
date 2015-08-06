@@ -57,3 +57,7 @@ var game={
     };
   }
 }
+$(document).ready(function(){
+
+
+});
