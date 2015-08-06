@@ -1,5 +1,35 @@
-describe("Frog", function() {
+describe("game", function(){
 
+    it("should be active", function() {
+      expect(game.gameover).toEqual(false);
+    });
+
+    it("should have score of 0 on game start up", function(){
+      expect(game.score).toEqual(0);
+    });
+
+    it("should add score when land on lillypad", function(){
+      frog.lands(true)
+      expect(game.score).toEqual(1);
+    });
+
+     it("should be gameover when frog is dead", function(){
+      frog.lands(false)
+      expect(game.gameover).toEqual(true);
+    });
+
+     it("game should reset when gameover", function(){
+      game.gameReset()
+      expect(game.score).toEqual(0);
+      expect(game.gameover).toEqual(false);
+      expect(frog.alive).toEqual(true);
+      expect(frog.landingTime).toEqual(frog.landingTime);
+    });
+
+});
+
+
+describe("Frog", function() {
 
     it("should move two steps when pressed on Q", function() {
        frog.move("q");
@@ -36,29 +66,26 @@ describe("Frog", function() {
 });
 
 
-
 describe("lilyPad", function(){
 
-  it("Should know it's state", function() {
-     expect(lilyPad).toContain(true);
-     expect(lilyPad).toContain(false);
-  });
+    it("Should know it's state", function() {
+       expect(lilyPad).toContain(true);
+       expect(lilyPad).toContain(false);
+    });
 
-  it("the track should have 20 items", function (){
-    expect(lilyPad.length).toEqual(20);
-  });
+    it("the track should have 20 items", function (){
+      expect(lilyPad.length).toEqual(20);
+    });
+
+    it("Lilipad track should move when jump is made", function(){
+      previousLilypad = lilyPad;
+      game.moveLilypad(2);
+      expect(lilyPad[0]).toEqual(previousLilypad[2]);
+      expect(lilyPad[19]).not.toBe(null);
+    });
+
 
 });
 
 
-describe("game", function(){
-
-  it("should be active", function() {
-    expect(game.gameover).toEqual(false);
-  });
-
-  it("should have score of 0 on game start up", function(){
-    expect(game.score).toEqual(0);
-  });
-});
 
