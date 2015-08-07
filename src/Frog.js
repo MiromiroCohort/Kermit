@@ -92,7 +92,7 @@ function fade_lilypad(speed)
 function frog_jump(length)
 {
   if (length===1){time=400}
-    if (length ===2){time=800}
+    if (length ===2){time=500}
   $(".frog img").animate( {marginTop: '-=100px'}, time);
     $(".frog img").animate( {marginTop: '+=100px'}, time);
 }
@@ -129,9 +129,11 @@ function gameOver()
   alert("GAME OVER.Your current score is "+game.score);
   game.gameReset();
   fade_lilypad();
+    location.reload();
 }
 
 $(document).ready(function(){
+
     createLilyPad();
    fade_lilypad("fast");
 
@@ -139,8 +141,6 @@ $(document).ready(function(){
  $("#game_start").click(function() {
     $( ".bg_landscape" ).addClass( "x1" );
     $( ".bg_water" ).addClass( "x2" );
-
-
   });
 
 
@@ -176,6 +176,8 @@ $(document).ready(function(){
        }
 
     });
+
+
 
 
 });
