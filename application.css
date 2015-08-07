@@ -12,13 +12,14 @@ body {
 .bg_landscape {
 	width: 100%; height:380px;
 	background-image: url(farBG1.png);
-/*    z-index: -1;*/
+    z-index: 10;
+    position: relative;;
 /*    position: absolute;*/
 }
 .bg_water {
 	width: 100%; height:500px;
 	background-image: url(water2.png);
-/*    z-index: -1;*/
+    z-index: -10;
     position: absolute;
 }
 
@@ -34,22 +35,22 @@ body {
 	-o-animation: waterScroll 25s linear infinite;
 }
 
- 
+
 @-webkit-keyframes backgroundScroll {
 from {background-position: 0 0;}
 to {background-position: -1024px 0;}
 }
- 
+
 @keyframes backgroundScroll {
 from {background-position: 0 0;}
 to {background-position: -1024px 0;}
 }
- 
+
 @-webkit-keyframes waterScroll {
 from {background-position: 0 0;}
 to {background-position: -971px 0;}
 }
- 
+
 @keyframes waterScroll {
 from {background-position: 0 0;}
 to {background-position: -971px 0;}
@@ -71,18 +72,28 @@ to {background-position: -971px 0;}
 }
 
 .lilypad img{
-/*position: absolute;*/
-
 max-height: 150px;
 max-width: 150px;
 width: 120px;
 height: 120px;
-margin: 100px 10px;
-z-index: 2;    
+margin: 81px 10px;
+display: inline;
+/*z-index: 2;*/
+}
+.frog img{
+/*position: absolute;*/
+
+/*max-height: 150px;*/
+/*max-width: 150px;*/
+width: 140px;
+height: 120px;
+margin: 81px 840px;
+/*z-index: 2;*/
 }
 
+
 /*td{position:relative; z-index:1}*/
-#bottomimg{position:absolute; top:100; left:0; z-index:1}
+/*#bottomimg{position:absolute; top:100; left:0; z-index:1}*/
 #topimg{position:absolute; top:100; left:0; z-index:2}
 
 /* frog now sitting directly on top of lilypad image*/

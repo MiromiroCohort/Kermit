@@ -57,7 +57,25 @@ var game={
     };
   }
 }
+
 $(document).ready(function(){
+
+  for (var i = 0; i  <10; i++) {
+
+  };
+
+  $("#game_start").click(function() {
+    $( ".bg_landscape" ).addClass( "x1" );
+    $( ".bg_water" ).addClass( "x2" );
+    $(".frog img").animate( {marginTop: '-=100px'}, 500);
+    $(".frog img").animate( {marginTop: '+=100px'}, 500);
+
+  });
+
+
+
+
+
 
 
 });
