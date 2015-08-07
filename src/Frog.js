@@ -9,6 +9,7 @@ var frog={
       if(current_lilypad === true){
         this.alive = true;
         game.score += 1;
+        // $(".frog img").stop();
       }else{
         this.alive = false;
         game.gameover = true;
@@ -100,7 +101,7 @@ function frog_jump(length)
 var interval
 function clock(){
     // $('body').prepend('<div id="clock"><label id="seconds">10</label></div>');
-         var totalSeconds = 2;
+         var totalSeconds = 1;
          interval=setInterval(setTime, 1000);
         function setTime()
         {
@@ -124,38 +125,52 @@ function clock(){
         }
 }
 
+
+var boing = new Audio("boing.wav");
+var splash = new Audio("splash.wav");
+
 function gameOver()
 {
+  $($(".lilypad")[0]).css("opacity",0);
+  splash.play();
+  $(".frog img").css("opacity",0);
   alert("GAME OVER.Your current score is "+game.score);
   game.gameReset();
   fade_lilypad();
-    location.reload();
+  location.reload();
 }
 
 $(document).ready(function(){
 
-    createLilyPad();
-   fade_lilypad("fast");
+
+  createLilyPad();
+  fade_lilypad("fast");
 
 
  $("#game_start").click(function() {
     $( ".bg_landscape" ).addClass( "x1" );
     $( ".bg_water" ).addClass( "x2" );
+    $("#game_start").hide();
+    clock();
   });
 
 
    $(document).keydown(function() {
       if (event.which === 81)
+        // event.preventDefault(500);
         { console.log("q");
           console.log();
           move= frog.move("q");
+          boing.play();
 
         }
       if (event.which === 80)
       {
+        // event.preventDefault(500);
         console.log("p");
         console.log(frog);
-        move=frog.move("p")
+        move=frog.move("p");
+        boing.play();
 
 
       }
@@ -168,11 +183,14 @@ $(document).ready(function(){
       // game.moveLilypad(move);
       // fade_lilypad("slow");
       frog.lands(lilyPad[0]);
+
        clearInterval(interval);
        clock();
       if(!frog.alive)
       {
-         gameOver();
+        splash.play();
+        $(".frog img").css("opacity",0);
+        gameOver();
        }
 
     });
