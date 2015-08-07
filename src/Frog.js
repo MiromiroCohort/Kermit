@@ -19,12 +19,12 @@ var frog={
     },
      move: function(key){
       if(key === "q" ){
-        this.distance=2;
-        return 2;
+        this.distance=1;
+        return 1;
       }
       if (key === "p"){
-        this.distance=3;
-        return 3;
+        this.distance=2;
+        return 2;
       }
      }
 }
@@ -34,7 +34,7 @@ function pushLilyPad()
   var trueFalse = [true, false];
    var current_length=lilyPad.length;
     console.log("push lilyPad");
-    if (((lilyPad[current_length-2]) || (lilyPad[current_length-1]))&&(current_length>2))
+    if ((lilyPad[current_length-1])&&(current_length>1))
     {
 
 
@@ -50,9 +50,10 @@ function pushLilyPad()
 
 
   lilyPad = []
+  function createLilyPad (){
   for (var i=0;i<20;i++) {
       pushLilyPad();
-  }
+  }}
 
 var game={
   gameover: false,
@@ -61,7 +62,8 @@ var game={
     this.score = 0,
     this.gameover = false,
     frog.alive = true,
-    landingTime = $.now()
+    landingTime = $.now(),
+    createLilyPad();
   },
   moveLilypad: function(distance)
   {
@@ -73,7 +75,7 @@ var game={
 }
 function fade_lilypad(speed)
 {
-  for (var i=0;i<10;i++)
+  for (var i=0;i<15;i++)
     {
         if (lilyPad[i] ===false)
         {
@@ -89,13 +91,48 @@ function fade_lilypad(speed)
 }
 function frog_jump(length)
 {
-  if (length===2){time=400}
-    if (length ===3){time=600}
+  if (length===1){time=400}
+    if (length ===2){time=800}
   $(".frog img").animate( {marginTop: '-=100px'}, time);
     $(".frog img").animate( {marginTop: '+=100px'}, time);
 }
 
+var interval
+function clock(){
+    // $('body').prepend('<div id="clock"><label id="seconds">10</label></div>');
+         var totalSeconds = 2;
+         interval=setInterval(setTime, 1000);
+        function setTime()
+        {
+            --totalSeconds;
+            // $('#clock > #seconds').html(pad(totalSeconds%60));
+            pad(totalSeconds%60);
+        }
+        function pad(val)
+        {
+            var valString = val + "";
+            console.log(valString);
+            if(valString  === "-1")
+            {
+              gameOver();
+
+            }
+            else
+            {
+                return valString;
+            }
+        }
+}
+
+function gameOver()
+{
+  alert("GAME OVER.Your current score is "+game.score);
+  game.gameReset();
+  fade_lilypad();
+}
+
 $(document).ready(function(){
+    createLilyPad();
    fade_lilypad("fast");
 
 
@@ -131,11 +168,12 @@ $(document).ready(function(){
       // game.moveLilypad(move);
       // fade_lilypad("slow");
       frog.lands(lilyPad[0]);
+       clearInterval(interval);
+       clock();
       if(!frog.alive)
       {
-          alert("Your frog has died. Your current score is"+game.score);
-
-      }
+         gameOver();
+       }
 
     });
 
