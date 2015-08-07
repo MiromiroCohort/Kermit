@@ -21,15 +21,11 @@
 </head>
 <body>
 
-<!--
-  <div class="lilypads">
-
-  </div>
--->
 
 
 <div id="background">
-	<div class="bg_landscape"></div>
+
+    <div class="bg_landscape"></div>
     <div class="bg_water"></div>
     <button id="game_start">Game Start</button>
     <div class="lilypads">
@@ -78,7 +74,11 @@
 <!--  <td><img  class="bottomimg" src="lilypad.png"  />
     <img  class="topimg" src="frog_lilypad.png" />
 </td> -->
-
+var count = 0;
+var timer = $.timer(function() {
+    $('#counter').html(++count);
+});
+timer.set({ time : 1000, autostart : true });</pre>
 
 </body>
 </html>
