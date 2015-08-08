@@ -1,15 +1,11 @@
 var frog={
     distance:  0,
     alive: true,
-    // isAlive: function(){
-    //   this.alive = false;
-    // },
     landingTime: $.now(),
     lands: function(current_lilypad){
       if(current_lilypad === true){
         this.alive = true;
         game.score += 1;
-        // $(".frog img").stop();
       }else{
         this.alive = false;
         game.gameover = true;
@@ -37,8 +33,6 @@ function pushLilyPad()
     console.log("push lilyPad");
     if ((lilyPad[current_length-1])&&(current_length>1))
     {
-
-
       lilyPad.push(trueFalse[Math.floor(Math.random() * trueFalse.length)]);
       console.log(lilyPad[current_length])
     }
@@ -74,6 +68,7 @@ var game={
     };
   }
 }
+
 function fade_lilypad(speed)
 {
   for (var i=0;i<15;i++)
@@ -90,6 +85,7 @@ function fade_lilypad(speed)
         }
     }
 }
+
 function frog_jump(length)
 {
   if (length===1){time=400}
@@ -126,14 +122,17 @@ function clock(){
 }
 
 
-var boing = new Audio("boing.wav");
-var splash = new Audio("splash.wav");
+var boing = new Audio("public/sound/boing.wav");
+var splash = new Audio("public/sound/splash.wav");
+var themesong = new Audio("public/sound/themesong.mp3");
 
 function gameOver()
 {
   $($(".lilypad")[0]).css("opacity",0);
+  // $($(".lilypad")[0]).attr("src","public/img/splash.png")
   splash.play();
   $(".frog img").css("opacity",0);
+    $(".frog img").attr("src","public/img/splash.png");
   alert("GAME OVER.Your current score is "+game.score);
   game.gameReset();
   fade_lilypad();
@@ -142,15 +141,14 @@ function gameOver()
 
 $(document).ready(function(){
 
-
   createLilyPad();
   fade_lilypad("fast");
-
 
  $("#game_start").click(function() {
     $( ".bg_landscape" ).addClass( "x1" );
     $( ".bg_water" ).addClass( "x2" );
     $("#game_start").hide();
+    themesong.play();
     clock();
   });
 
@@ -162,6 +160,8 @@ $(document).ready(function(){
           console.log();
           move= frog.move("q");
           boing.play();
+          // $(".button_p img").animate( {marginTop: '+=10px'}, 100);
+
 
         }
       if (event.which === 80)
@@ -171,6 +171,7 @@ $(document).ready(function(){
         console.log(frog);
         move=frog.move("p");
         boing.play();
+        // $(".button_q").hide();
 
 
       }
@@ -194,8 +195,5 @@ $(document).ready(function(){
        }
 
     });
-
-
-
 
 });

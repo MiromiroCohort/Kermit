@@ -1,132 +1,119 @@
-#images_hz {
-width: 960px;
-height: auto;
-overflow: hidden;
-}
-
-.imimg {
-display: inline;
-margin: 0 100px;}
-
+*{ margin: 0; padding: 0;}
 
 body {
-  counter-reset:section;
-  background-color: #F6F6EF;
-  font-family: Verdana;
-  max-width: 700px;
-  margin: 0 auto;
+	overflow: hidden;
 }
 
-header {
-  background-color: #F4712D;
-  padding: 5px 5px;
+#background {
+    position: relative;
 }
 
-header h1 {
-  font-size: 11pt;
-  display: inline;
+.bg_landscape {
+	width: 100%; height:380px;
+	background-image: url(../img/farBG1.png);
 }
 
-header p {
-  margin-left: 5px ;
-  font-size: 10pt;
-  display: inline;
+.bg_water {
+	width: 100%; height:500px;
+	background-image: url(../img/water2.png);
+  position: absolute;
 }
 
-header p a {
-  color: black;
-  text-decoration: none;
+.button_p {
+  position: absolute;
+  left: 100px;
+  bottom: 10%;
 }
 
-header p a:nth-child(n + 2):before {
-  content: " | ";
+.button_q {
+  position: absolute;
+  right: 100px;
+  bottom: 10%;
 }
 
-article {
-  margin: 5px 5px;
+.button_q img {
+  width: 200px; height:100px;
 }
 
-article a.vote-button {
-  color: #8C8C8C;
-  text-decoration: none;
-  display: inline;
-  vertical-align: sub;
+.button_p img {
+  width: 200px; height:100px;
+}
+
+.x1 {
+	-webkit-animation: backgroundScroll 40s linear infinite;
+	-moz-animation: backgroundScroll 40s linear infinite;
+	-o-animation: backgroundScroll 40s linear infinite;
+}
+
+.x2 {
+	-webkit-animation: waterScroll 5s linear infinite;
+	-moz-animation: waterScroll 5s linear infinite;
+	-o-animation: waterScroll 5s linear infinite;
 }
 
 
-article h2 {
-  display: inline;
-  font-size: 10pt;
+@-webkit-keyframes backgroundScroll {
+from {background-position: 0 0;}
+to {background-position: -1024px 0;}
 }
 
-article:before {
-  counter-increment: section;
-  color: #8C8C8C;
-  font-size: 10pt;
-  content: counter(section) ". ";
+@keyframes backgroundScroll {
+from {background-position: 0 0;}
+to {background-position: -1024px 0;}
 }
 
-article h2 a {
-  text-decoration: none;
-  color: black;
+@-webkit-keyframes waterScroll {
+from {background-position: 0 0;}
+to {background-position: -971px 0;}
 }
 
-article p {
-  color: #8C8C8C;
-  font-size: 7pt;
-  margin: 3px 30px;
+@keyframes waterScroll {
+from {background-position: 0 0;}
+to {background-position: -971px 0;}
 }
 
-article p span.points:after {
-  content: " points";
+
+
+.lilypads{
+    width: 100%;
+    height: 200px;
+    position: relative;
+/*    height: auto;*/
+/*    overflow: hidden;*/
 }
 
-article p span.username:before {
-  content: " by ";
+.lilypad {
+    max-width: 150px;
+    float: left;
 }
 
-article p span.timestamp:after {
-  content: ' hours ago';
+.lilypad img{
+/*position: absolute;*/
+
+max-height: 150px;
+max-width: 150px;
+width: 120px;
+height: 120px;
+margin: 100px 10px;
+z-index: 2;
 }
-
-article p span.comment-count:before {
-  content: ' | ';
-}
-
-article p span.comment-count:after {
-  content: ' comments | ';
-}
-
-article p a.delete {
-  text-decoration: none;
-  color: #8C8C8C;
-  text-decoration: none;
-}
-
-article p a.delete:before {
-  content: ' delete this post';
-
-}
-
-form {
-  margin: 15px 30px;
-}
-
-form#posts input[type='text'] {
-  width: 200px;
-  margin-left: 20px;
-  font-size: 10pt;
-  height: 17px;
+.frog img {
+  max-height: 150px;
+max-width: 150px;
+width: 120px;
+height: 120px;
+margin: 100px 10px;
+z-index: 2;
 
 }
 
-form#posts input[type='submit'] {
-  font-size: 10pt;
-  margin-left: 5px;
-  border-width: 1px;
-  font-weight: bold;
-  background-color: #F4712D;
+/*td{position:relative; z-index:1}*/
+#bottomimg{position:absolute; top:100; left:0; z-index:1}
+#topimg{position:absolute; top:100; left:0; z-index:2}
+
+/* frog now sitting directly on top of lilypad image*/
 
 
-}
+/*Lets start with the cloud formation rather*/
 
+/*The container will also serve as the SKY*/
